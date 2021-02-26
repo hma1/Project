@@ -68,7 +68,7 @@
 
 ## Additional Course Content
 
-- **Flask**: the web application course on 10/15
+- **Flask**: the web application course.
 - **APIs**: we had discussion with professor before that we may need to use this technique in our project
 
 
