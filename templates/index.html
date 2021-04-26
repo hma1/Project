@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="static/css/iconfont.css">
+    <style type="text/css">
+        a{
+        text-decoration:none;
+        }
+
+    .icon {
+    display: block;
+    font-size: 100px;
+    color:#333
+    }
+
+.constellation
+{
+float: left;
+margin-left: 10px;
+margin-top: 10px;
+text-align: center;
+width: 200px;
+border-radius: 20px;
+height: 140px;
+}
+
+.name{
+color:#8258FA
+}
+
+form{
+    margin:30px
+}
+    </style>
+</head>
+
+<body style="background-color: #F2F2F2;">
+
+
+<div style="width:100%;text-align:center">
+    <form class="form-inline" action="/get_constellation_by_birthday" method="post">
+        <div class="form-group">
+            <label >your birthday :</label>
+            <input type="text"  name ="birthday"  placeholder="example: 02-12">
+            <button type="submit">goto</button>
+        </div>
+    </form>
+</div>
+
+
+
+<hr>
+
+  {% for k,v in constellation_list.items() %}
+<div class ="constellation">
+        <a  href="/get_info_by_sign/{{v}}">
+            <i class="icon iconfont icon-{{v}}"></i>
+            <div class = "name">{{k}}</div>
+        </a>
+</div>
+{% endfor %}
+
+</body>
+</html>

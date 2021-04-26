@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your horoscope info</title>
+	<link rel="stylesheet" href="/static/css/iconfont.css">
+	<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+
+    <style type="text/css">
+
+	.main-div{
+		border: 5px solid #848484;
+		height: 800px;
+		width: 1000px;
+		text-align: center;
+		margin: 0 auto;
+		background-color: #F2F2F2;
+		padding: 20px;
+	}
+
+	.txt{
+		text-align: left;
+		line-height: 25px;
+		color: #1C1C1C;
+		font-family: caslongrad,serif;
+		font-weight: 400;
+		font-size: 18px;
+	}
+
+	.title{
+		text-align: left;
+		line-height: 25px;
+		color: #8181F7
+		font-family: caslongrad,serif;
+		font-weight: 400;
+		font-size: 30px;
+		margin-bottom: 5px;
+		font-style: italic;
+
+
+	}
+
+	    .icon {
+    display: block;
+    font-size: 100px;
+    color:#8181F7;
+    border: 1px solid #BCA9F5;
+    width:100px;
+    text-align: center;
+    margin: 0 auto;
+    }
+
+    .bt-div{
+    margin-top:40px;
+    text-align: right;
+    }
+
+    </style>
+</head>
+<body>
+
+
+
+<div class="main-div" >
+	<span id = "chSign" hidden>{{data.chSign}}</span>
+    <span id = "sign" value ={{data.sign}}>{{data.sign}}</span>
+	 <i class="icon iconfont icon-{{data.chSign}}"></i>
+	 <div class="title"><i class="fa fa-file-text-o" aria-hidden="true"></i>description</div>
+	 <div class ="txt">{{data.description}}</div>
+
+	<div class="title">
+		<i class="fa fa-calendar-times-o" aria-hidden="true"></i>
+		date_range</div>
+	<div class ="txt">{{data.date_range}}</div>
+
+
+	<div class="title">
+	<i class="fa fa-times-circle-o" aria-hidden="true"></i>
+	current_date</div>
+	<div class ="txt">{{data.current_date}}</div>
+
+	<div class="title">
+	<i class="fa fa-star" aria-hidden="true"></i>
+	compatibility</div>
+	<div class ="txt">{{data.compatibility}}</div>
+
+		<div class="title">
+	<i class="fa fa-heart" aria-hidden="true"></i>
+	mood</div>
+	<div class ="txt">{{data.mood}}</div>
+
+
+
+	<div class="title">
+				<i class="fa fa-table" aria-hidden="true"></i>
+	color</div>
+	<div class ="txt">{{data.color}}</div>
+
+	<div class="title">
+				<i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
+	lucky_number</div>
+	<div class ="txt">{{data.lucky_number}}</div>
+
+
+		<div class="title">
+				<i class="fa fa-window-close" aria-hidden="true"></i>
+	lucky_time</div>
+	<div class ="txt">{{data.lucky_time}}</div>
+
+	<div class="bt-div">
+	<button type="button" onclick="goHome()">go home</button>
+	<button type="button" onclick="next()">next</button>
+</div>
+</div>
+
+<script type="text/javascript">
+	function goHome(){
+		window.location.href = "/";
+	}
+
+	function next(){
+		constellations = ["mojie","shuiping","shuangyu", "baiyang", "jinniu","shuangzi","shizi","juxie","chunv","tiancheng", "tianxie", "sheshou"]
+		doc = document.getElementById("chSign")
+		chSign = doc.innerText
+		console.log(chSign)
+		index = constellations.indexOf(chSign)
+		console.log(index)
+		index = (index+1)%12
+		console.log(index)
+		sign= constellations[index]
+		console.log(sign)
+		window.location.href = "http://127.0.0.1:5000/get_info_by_sign/"+sign
+	}
+</script>
+
+</body>
+</html>
